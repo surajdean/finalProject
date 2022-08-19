@@ -1,5 +1,5 @@
-from book import Book
-from customer import Customer
+from finalProject.book import Book
+from finalProject.customer import Customer
 
 class Library:
     """ Abstract base class for library object
@@ -48,13 +48,16 @@ class Library:
         self.customers[customer.name] = [customer.email, customer.address, customer.phone_number]
 
     def checkout_book_by_title(self, book_name):
-        """ Claim one of the available squares on the board.
+        """ Check out book by given book name
 
         Args:
-            board (Board): a tic tac toe board.
+            book_name (string): name of the book wanted to be checked out
         
+        Returns:
+            Returns a list of books to be checked out 
+
         Side effects:
-            Claims a square on the board.
+            Book object gets removed from self.books
         """
 
         for book in self.books:
@@ -65,13 +68,16 @@ class Library:
         raise ValueError("Book wasn't found")
 
     def checkout_book_by_genre(self, book_genre):
-        """ Claim one of the available squares on the board.
+        """ Check out book by given book genre
 
         Args:
-            board (Board): a tic tac toe board.
+            book_genre (string): genre of the book wanted to be checked out
         
+        Returns:
+            Returns a list of books to be checked out 
+
         Side effects:
-            Claims a square on the board.
+            Book object gets removed from self.books
         """
 
         return_list = []
@@ -87,13 +93,16 @@ class Library:
         raise ValueError("Book wasn't found")
 
     def checkout_book_by_author(self, author_name):
-        """ Claim one of the available squares on the board.
+        """ Check out book by given author_name
 
         Args:
-            board (Board): a tic tac toe board.
+            author_name (string): name of the author of book wanted to be checked out
         
+        Returns:
+            Returns a list of books to be checked out 
+
         Side effects:
-            Claims a square on the board.
+            Book object gets removed from self.books
         """
 
         return_list = []
@@ -109,19 +118,24 @@ class Library:
         raise ValueError("Book wasn't found")
 
     def return_books(self, customer_books):
-        """ Claim one of the available squares on the board.
+        """ Returns the books customer has checked out back to library
 
         Args:
-            board (Board): a tic tac toe board.
+            customer_books (list of books): list of books customer has checked out
         
         Side effects:
-            Claims a square on the board.
+            Appends the books from customer back to self.book list
         """
 
         for book in customer_books:
             self.books.append(book)
 
     def curr_inventory(self):
+        """ Shows the library inventory of books
+
+        Side Effect:
+            Prints out self.books list
+        """
 
         names = []
 
